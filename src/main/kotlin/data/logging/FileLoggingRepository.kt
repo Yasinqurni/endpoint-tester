@@ -1,7 +1,7 @@
 package repository
 
-import domain.model.EndpointCallItem
-import domain.model.EndpointCallResult
+import model.EndpointCallItem
+import model.EndpointCallResult
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import java.nio.file.Files

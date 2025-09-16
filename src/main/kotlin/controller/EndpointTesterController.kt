@@ -1,15 +1,19 @@
 package controller
 
-import domain.model.EndpointTesterRequest
-import domain.model.EndpointTesterResponse
-import service.EndpointTesterService
+import model.EndpointTesterRequest
+import model.EndpointTesterResponse
+import usecase.EndpointTesterUseCase
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
-class EndpointTesterController : KoinComponent {
-    private val endpointTesterService: EndpointTesterService by inject()
+interface EndpointTesterControllerInterface {
+    suspend fun processEndpointTests(request: EndpointTesterRequest): Result<EndpointTesterResponse>
+}
+
+class EndpointTesterController : EndpointTesterControllerInterface, KoinComponent {
+    private val endpointTesterUseCase: EndpointTesterUseCase by inject()
     
-    suspend fun processEndpointTests(request: EndpointTesterRequest): EndpointTesterResponse {
-        return endpointTesterService.processEndpointTests(request)
+    override suspend fun processEndpointTests(request: EndpointTesterRequest): Result<EndpointTesterResponse> {
+        return endpointTesterUseCase.processEndpointTests(request)
     }
 }

@@ -9,7 +9,8 @@ import repository.EndpointRepository
 import repository.KtorEndpointRepository
 import repository.FileLoggingRepository
 import repository.LoggingRepository
-import service.EndpointTesterService
+import usecase.EndpointTesterUseCase
+import usecase.EndpointTesterUseCaseImpl
 import controller.EndpointTesterController
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.cio.CIO
@@ -46,8 +47,8 @@ private val appModule = module {
     single<EndpointRepository> { KtorEndpointRepository(get()) }
     single<LoggingRepository> { FileLoggingRepository(Path.of("build/logs")) }
     
-    // Services
-    single { EndpointTesterService(get(), get()) }
+    // Use Cases
+    single<EndpointTesterUseCase> { EndpointTesterUseCaseImpl(get(), get()) }
     
     // Controllers
     single { EndpointTesterController() }

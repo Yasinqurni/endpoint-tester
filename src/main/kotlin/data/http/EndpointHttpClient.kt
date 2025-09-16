@@ -1,7 +1,7 @@
 package repository
 
-import domain.model.EndpointCallItem
-import domain.model.EndpointCallResult
+import model.EndpointCallItem
+import model.EndpointCallResult
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
