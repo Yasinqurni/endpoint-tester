@@ -1,0 +1,22 @@
+{
+  "headers": {
+    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+    "Content-Type": "application/x-www-form-urlencoded",
+    "Accept": "application/json",
+    "User-Agent": "StressTester/1.0"
+  },
+  "config": {
+    "endpoint": "https://httpbin.org/forms/post",
+    "method": "POST",
+    "formData": {
+      "username": "stress_test_user",
+      "password": "test_password_123",
+      "email": "stress@test.com",
+      "department": "QA"
+    },
+    "concurrentUsers": 15,
+    "totalRequests": 150,
+    "rampUpTime": 20,
+    "duration": 90
+  }
+}

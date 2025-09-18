@@ -1,0 +1,63 @@
+{
+  "headers": {
+    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "User-Agent": "EndpointTester/1.0",
+    "Accept-Language": "en-US,en;q=0.9"
+  },
+  "data": [
+    {
+      "endpoint": "https://httpbin.org/get",
+      "method": "GET"
+    },
+    {
+      "endpoint": "https://httpbin.org/post",
+      "method": "POST",
+      "body": "{\"name\": \"John Doe\", \"email\": \"john@example.com\", \"age\": 30}"
+    },
+    {
+      "endpoint": "https://httpbin.org/put",
+      "method": "PUT",
+      "body": "{\"id\": 1, \"name\": \"Updated Name\", \"status\": \"active\"}"
+    },
+    {
+      "endpoint": "https://httpbin.org/delete",
+      "method": "DELETE"
+    },
+    {
+      "endpoint": "https://httpbin.org/patch",
+      "method": "PATCH",
+      "body": "{\"status\": \"updated\"}"
+    },
+    {
+      "endpoint": "https://httpbin.org/forms/post",
+      "method": "POST",
+      "formData": {
+        "username": "testuser",
+        "password": "testpass123",
+        "email": "test@example.com"
+      }
+    },
+    {
+      "endpoint": "https://httpbin.org/anything/upload",
+      "method": "POST",
+      "fileData": {
+        "document.pdf": "JVBERi0xLjQKJcOkw7zDtsO8CjIgMCBvYmoKPDwKL0xlbmd0aCAzIDAgUgo+PgpzdHJlYW0K...",
+        "image.jpg": "/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcU..."
+      }
+    },
+    {
+      "endpoint": "https://httpbin.org/status/200",
+      "method": "GET"
+    },
+    {
+      "endpoint": "https://httpbin.org/status/404",
+      "method": "GET"
+    },
+    {
+      "endpoint": "https://httpbin.org/status/500",
+      "method": "GET"
+    }
+  ]
+}

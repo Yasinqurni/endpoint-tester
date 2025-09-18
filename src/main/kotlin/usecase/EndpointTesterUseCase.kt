@@ -23,7 +23,7 @@ class EndpointTesterUseCaseImpl(
             coroutineScope {
                 val jobs = request.data.map { item ->
                     async {
-                        processEndpointCall(item)
+                        processEndpointCall(item, request.headers)
                     }
                 }
                 
@@ -36,12 +36,12 @@ class EndpointTesterUseCaseImpl(
             }
         }
 
-    private suspend fun processEndpointCall(item: EndpointCallItem): EndpointCallResult {
+    private suspend fun processEndpointCall(item: EndpointCallItem, headers: model.Headers?): EndpointCallResult {
         // Log the request
         loggingRepository.writeRequest(item)
         
         // Execute the HTTP call
-        val result = endpointRepository.execute(item)
+        val result = endpointRepository.execute(item, headers)
         
         // Log the response
         loggingRepository.writeResult(result)

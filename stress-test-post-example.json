@@ -1,0 +1,17 @@
+{
+  "headers": {
+    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "User-Agent": "StressTester/1.0"
+  },
+  "config": {
+    "endpoint": "https://httpbin.org/post",
+    "method": "POST",
+    "body": "{\"userId\": 123, \"action\": \"stress_test\", \"timestamp\": \"2024-01-01T00:00:00Z\"}",
+    "concurrentUsers": 20,
+    "totalRequests": 200,
+    "rampUpTime": 15,
+    "duration": 120
+  }
+}

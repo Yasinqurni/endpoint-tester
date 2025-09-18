@@ -1,0 +1,16 @@
+{
+  "headers": {
+    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "User-Agent": "StressTester/1.0"
+  },
+  "config": {
+    "endpoint": "https://httpbin.org/delay/1",
+    "method": "GET",
+    "concurrentUsers": 10,
+    "totalRequests": 100,
+    "rampUpTime": 10,
+    "duration": 60
+  }
+}
