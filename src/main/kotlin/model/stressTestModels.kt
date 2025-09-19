@@ -45,4 +45,15 @@ data class StressTestResult(
     val message: String
 )
 
+@Serializable
+data class StressTestLogData(
+    val timestamp: String,
+    val config: StressTestConfig,
+    val metrics: StressTestMetrics,
+    val totalResults: Int,
+    val successRate: String,
+    val avgResponseTime: String,
+    val requestsPerSecond: Double
+)
+
 

@@ -4,6 +4,7 @@ import model.EndpointCallItem
 import model.EndpointCallResult
 import model.StressTestConfig
 import model.StressTestMetrics
+import model.StressTestLogData
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import java.nio.file.Files
@@ -12,7 +13,7 @@ import java.nio.file.StandardOpenOption
 import java.time.OffsetDateTime
 
 interface LoggingRepository {
-    suspend fun writeRequest(item: EndpointCallItem)
+    suspend fun writeRequest(item: EndpointCallItem, baseUrl: String? = null)
     suspend fun writeResult(result: EndpointCallResult)
     suspend fun writeStressTestResult(config: StressTestConfig, metrics: StressTestMetrics, results: List<EndpointCallResult>)
 }
@@ -28,10 +29,14 @@ class LoggingRepositoryImpl(
         }
     }
 
-    override suspend fun writeRequest(item: EndpointCallItem) {
+    override suspend fun writeRequest(item: EndpointCallItem, baseUrl: String? = null) {
         val line = buildString {
             append(OffsetDateTime.now().toString())
             append(" | REQUEST | ")
+            append("Title: ${item.title} | ")
+            baseUrl?.let { append("BaseURL: $it | ") }
+            append("Method: ${item.httpMethod} | ")
+            append("Endpoint: ${item.endpointUrl} | ")
             append(json.encodeToString(item))
             append('\n')
         }
@@ -42,6 +47,10 @@ class LoggingRepositoryImpl(
         val line = buildString {
             append(OffsetDateTime.now().toString())
             append(" | RESPONSE | ")
+            append("Title: ${result.title} | ")
+            append("Status: ${result.statusCode} | ")
+            append("Success: ${result.success} | ")
+            append("Duration: ${result.durationMs}ms | ")
             append(json.encodeToString(result))
             append('\n')
         }
@@ -49,14 +58,14 @@ class LoggingRepositoryImpl(
     }
 
     override suspend fun writeStressTestResult(config: StressTestConfig, metrics: StressTestMetrics, results: List<EndpointCallResult>) {
-        val stressTestData = mapOf(
-            "timestamp" to OffsetDateTime.now().toString(),
-            "config" to config,
-            "metrics" to metrics,
-            "totalResults" to results.size,
-            "successRate" to "${metrics.successfulRequests}/${metrics.totalRequests}",
-            "avgResponseTime" to "${metrics.averageResponseTime}ms",
-            "requestsPerSecond" to metrics.requestsPerSecond
+        val stressTestData = StressTestLogData(
+            timestamp = OffsetDateTime.now().toString(),
+            config = config,
+            metrics = metrics,
+            totalResults = results.size,
+            successRate = "${metrics.successfulRequests}/${metrics.totalRequests}",
+            avgResponseTime = "${metrics.averageResponseTime}ms",
+            requestsPerSecond = metrics.requestsPerSecond
         )
         
         val line = buildString {
@@ -65,6 +74,7 @@ class LoggingRepositoryImpl(
             append(json.encodeToString(stressTestData))
             append('\n')
         }
+        
         Files.write(stressTestLogFilePath(), line.toByteArray(), StandardOpenOption.CREATE, StandardOpenOption.APPEND)
     }
 

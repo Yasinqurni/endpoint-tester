@@ -36,9 +36,9 @@ class EndpointTesterUseCaseImpl(
             }
         }
 
-    private suspend fun processEndpointCall(item: EndpointCallItem, headers: model.Headers?): EndpointCallResult {
-        // Log the request
-        loggingRepository.writeRequest(item)
+    private suspend fun processEndpointCall(item: EndpointCallItem, headers: model.Headers): EndpointCallResult {
+        // Log the request with base URL information
+        loggingRepository.writeRequest(item, headers.BaseUrl)
         
         // Execute the HTTP call
         val result = endpointRepository.execute(item, headers)

@@ -1,0 +1,586 @@
+{
+    "configuration": {
+        "base-url": "https://stagingapisiji.uvcr.me",
+        "retry": true
+    },
+    "headers": {
+      "Authorization": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF9lbXBsb3llZSI6MjIyLCJmaXJzdF9uYW1lIjoiTXVoYW1tYWQiLCJlbWFpbCI6Im11aGFtbWFkLnlhc2luQHVsdHJhdm91Y2hlci5jby5pZCIsImlhdCI6MTc1OTMwNDEwOSwiZXhwIjoxNzU5MzA3NzA5LCJpc3MiOiJzaWppX2F1dGhlbnRpY2F0aW9uX2FwaSIsInN1YiI6InNpamktYWNjZXNzLXRva2VuIiwianRpIjoic2lqaS11c2VyLmlkIn0.W47e1I51K0ZMbIeaVkO4G_nxWUR5HSh6KCD9_PP3unU",
+      "Content-Type": "application/json",
+      "Accept": "application/json",
+      "User-Agent": "EndpointTester/1.0",
+      "Accept-Language": "en-US,en;q=0.9"
+    },
+    "data": [
+        {
+            "title": "list sku master voucher",
+            "endpoint": "/inventory/v1/sku-master-voucher?page=1&size=20&sortBy=&descending=false&search=&type=datatable&id_publisher=2&voucher_type=DIGITAL",
+            "method": "GET"
+        },
+        {
+            "title": "Upload stock external",
+            "endpoint": "/inventory/v1/external/stock-in/upload",
+            "method": "POST",
+            "body": {
+                "id_publisher": 2388,
+                "id_sku_master_voucher": 146,
+                "purchase_price": 47500,
+                "type": "DIGITAL",
+                "vouchers": [
+                    {
+                        "voucher_code": "ABCDABCD-1",
+                        "voucher_id": "TESTING01",
+                        "active_date": "2021-01-01",
+                        "expired_date": "2022-01-01"
+                    }
+                ]
+            }
+        },
+        {
+            "title": "Request Posting stock External",
+            "endpoint": "/inventory/v1/external/stock-in/118/request",
+            "method": "PATCH"
+        },
+        {
+            "title": "DELETE (DESTROY) PRE-APPROVED VOUCHERS",
+            "endpoint": "/inventory/v1/external/stock-in/93/delete",
+            "method": "DELETE"
+        },
+        {
+            "title": "DOWNLOAD UPLOADED VOUCHER (BY ID)",
+            "endpoint": "/inventory/v1/external/stock-in/86/download/uploaded-voucher?type=datatable&id_publisher=2&voucher_type=PHYSICAL&voucher_id=13",
+            "method": "GET"
+        },
+        {
+            "title": "list stock In external",
+            "endpoint": "/inventory/v1/external/stock-in?page=1&size=20&sortBy=&descending=true&search=&type=datatable&id_sku_master_voucher=146&voucher_type=DIGITAL&is_gift_card=NO&status=GENERATED&origin=UPLOADED&generated_by=EXTERNAL",
+            "method": "GET"
+        },
+        {
+            "title": "list stock gift card",
+            "endpoint": "/inventory/v1/stock-in/gift-card?page=1&size=20&sortBy=&descending=false&search=&type=datatable&id_publisher=2&voucher_type=DIGITAL",
+            "method": "GET"
+        },
+        {
+            "title": "DOWNLOAD GIFT CARD",
+            "endpoint": "/inventory/v1/stock-in/gift-card/10475/download",
+            "method": "GET"
+        },
+        {
+            "title": "download zip",
+            "endpoint": "/inventory/v1/stock-in/3205/download/custom-physical-gift-card-voucher",
+            "method": "GET"
+        },
+        {
+            "title": "Generate Code Voucher",
+            "endpoint": "/inventory/v1/stock-in/generate",
+            "method": "POST",
+            "body": {
+                "id_publisher_setting": "9",
+                "id_sku_master_voucher": "8",
+                "expired_date": "2027-07-03",
+                "active_date": "",
+                "nominal": 100000,
+                "quantity": "1",
+                "purchase_price": 100000,
+                "custom_design": "NO",
+                "background_color": "",
+                "expired_date_physical_stock_in_type": "DYNAMIC_AFTER_ACTIVATED",
+                "url": "https://redeem.url"
+            }
+        },
+        {
+            "title": "download pre voucher",
+            "endpoint": "/inventory/v1/stock-in/2803/download/pre-voucher",
+            "method": "GET"
+        },
+        {
+            "title": "Upload stock",
+            "endpoint": "/inventory/v1/stock-in/upload",
+            "method": "POST",
+            "body": {
+                "id_publisher": "312680",
+                "id_sku_master_voucher": "20048",
+                "purchase_price": 48000,
+                "vouchers": [
+                    {
+                        "voucher_id": "CGV-20250201A-000001",
+                        "voucher_code": "VC-CGV-20250201A-000001",
+                        "sku_master_voucher_code": "CGV00050",
+                        "nominal": 50000,
+                        "active_date": "2025-05-02",
+                        "expired_date": "2028-06-30",
+                        "voucher_pin": "123456"
+                    }
+                ],
+                "type": "DIGITAL"
+            }
+        },
+        {
+            "title": "Approve stock",
+            "endpoint": "/inventory/v1/stock-in/118/approve",
+            "method": "PATCH"
+        },
+        {
+            "title": "Check Order Status",
+            "endpoint": "/inventory/v1/stock-in/60/check-order-status",
+            "method": "PATCH"
+        },
+        {
+            "title": "list stock In",
+            "endpoint": "/inventory/v1/stock-in?page=1&size=20&sortBy=&descending=true&search=&type=datatable&id_sku_master_voucher=146&voucher_type=DIGITAL&id_publisher=2388&generated_by=EXTERNAL&origin=UPLOADED&start_distributed_time&end_distributed_time&status=&status=GENERATED",
+            "method": "GET"
+        },
+        {
+            "title": "download list stock In",
+            "endpoint": "/inventory/v1/stock-in/download?start_date=2021-03-03&end_date=2021-03-25&generated_by=EXTERNAL&origin=UPLOADED&status=GENERATED",
+            "method": "GET"
+        },
+        {
+            "title": "Allocate stock",
+            "endpoint": "/inventory/v1/stock-in/148/allocate",
+            "method": "PATCH",
+            "body": {
+                "allocations": [
+                    {
+                        "id_warehouse": 1,
+                        "quantity": 20
+                    }
+                ]
+            }
+        },
+        {
+            "title": "Posting stock",
+            "endpoint": "/inventory/v1/stock-in/485/posting",
+            "method": "PATCH",
+            "body": {
+                "url": ""
+            }
+        },
+        {
+            "title": "Upload Physical",
+            "endpoint": "/inventory/v1/stock-in/upload-physical/",
+            "method": "POST",
+            "body": {
+                "id_publisher": 3,
+                "id_sku_master_voucher": 6,
+                "purchase_price": 47500,
+                "type": "PHYSICAL",
+                "active_date": "2021-01-01",
+                "expired_date": "2022-01-01",
+                "quantity": 40
+            }
+        },
+        {
+            "title": "get download uploaded voucher",
+            "endpoint": "/inventory/v1/sku-master-voucher?page=1&size=20&sortBy=&descending=false&search=&type=datatable&voucher_type=PHYSICAL",
+            "method": "GET"
+        },
+        {
+            "title": "REJECT STOCK BY SCM",
+            "endpoint": "/inventory/v1/stock-in/54/reject",
+            "method": "PATCH",
+            "body": {
+                "url": ""
+            }
+        },
+        {
+            "title": "Request extend expiry",
+            "endpoint": "/inventory/v1/stock/extend-expiry",
+            "method": "POST",
+            "body": {
+                "id_sku_master_voucher": 2,
+                "old_expired_date": "2020-02-02",
+                "new_expired_date": "2022-02-02",
+                "stock_status": "AVAILABLE"
+            }
+        },
+        {
+            "title": "Request extend expiry voucher",
+            "endpoint": "/inventory/v1/stock/extend-expiry",
+            "method": "POST",
+            "body": {
+                "id_sku_master_voucher": 2,
+                "old_expired_date": "2020-02-02",
+                "new_expired_date": "2022-02-02",
+                "stock_status": "AVAILABLE"
+            }
+        },
+        {
+            "title": "Approve extend expiry request",
+            "endpoint": "/inventory/v1/stock/extend-expiry/90/approve",
+            "method": "PATCH"
+        },
+        {
+            "title": "Reject extend expiry request",
+            "endpoint": "/inventory/v1/stock/extend-expiry/1/reject",
+            "method": "PATCH"
+        },
+        {
+            "title": "Get extend expiry list",
+            "endpoint": "/inventory/v1/stock/extend-expiry?page=1&size=20&sortBy=&descending=true&search=&type=datatable&status=WAITING-APPROVAL&start_date=2021-03-03&end_date=2021-09-25",
+            "method": "GET"
+        },
+        {
+            "title": "Get extend expiry by id",
+            "endpoint": "/inventory/v1/stock/extend-expiry/4",
+            "method": "GET"
+        },
+        {
+            "title": "Request extend expiry",
+            "endpoint": "/inventory/v1/stock/gift-card/extend-expiry",
+            "method": "POST",
+            "body": {
+                "voucher_ids": [
+                    "UV50K-20210707-000034"
+                ]
+            }
+        },
+        {
+            "title": "Approve extend expiry request",
+            "endpoint": "/inventory/v1/stock/gift-card/extend-expiry/26/approve",
+            "method": "PATCH"
+        },
+        {
+            "title": "Reject extend expiry request",
+            "endpoint": "/inventory/v1/stock/gift-card/extend-expiry/4/reject",
+            "method": "PATCH",
+            "body": {
+                "rejection_reason": "test"
+            }
+        },
+        {
+            "title": "Get extend expiry list",
+            "endpoint": "/inventory/v1/stock/gift-card/extend-expiry?page=1&size=20&sortBy=&descending=true&search=&type=datatable&start_date=2021-03-03&end_date=2021-09-25",
+            "method": "GET"
+        },
+        {
+            "title": "Get extend expiry by id",
+            "endpoint": "/inventory/v1/stock/gift-card/extend-expiry/22?page=1&size=10&sortBy=id_stock&descending=true&type=datatable",
+            "method": "GET"
+        },
+        {
+            "title": "Request extend expiry for voucher sold",
+            "endpoint": "/inventory/v1/stock/voucher-sold/extend-expiry",
+            "method": "POST",
+            "body": {
+                "vouchers": [
+                    {
+                        "voucher_id": "SV-GH5X-1721359954717-qagf",
+                        "sales_no": "SO-20240719-4222609941137"
+                    }
+                ],
+                "request_reason": "test extend shadow",
+                "new_expired_date": "2028-10-01"
+            }
+        },
+        {
+            "title": "Approve extend expiry request",
+            "endpoint": "/inventory/v1/stock/extend-expiry/90/approve",
+            "method": "PATCH"
+        },
+        {
+            "title": "Reject extend expiry request",
+            "endpoint": "/inventory/v1/stock/extend-expiry/1/reject",
+            "method": "PATCH"
+        },
+        {
+            "title": "Get extend expiry list",
+            "endpoint": "/inventory/v1/stock/extend-expiry?page=1&size=20&sortBy=&descending=true&search=&type=datatable&status=WAITING-APPROVAL&start_date=2021-03-03&end_date=2021-09-25",
+            "method": "GET"
+        },
+        {
+            "title": "Get extend expiry by id",
+            "endpoint": "/inventory/v1/stock/voucher-sold/extend-expiry/587",
+            "method": "GET"
+        },
+        {
+            "title": "Get stock count grouped by warehouse",
+            "endpoint": "/inventory/v1/stock/count-grouped-by-warehouse?id_sku_master_voucher=43",
+            "method": "GET"
+        },
+        {
+            "title": "Get stock count by expired date",
+            "endpoint": "/inventory/v1/stock/1/count-by-expired-date?start_date=2021-01-03&end_date=2021-05-06&status=AVAILABLE",
+            "method": "GET"
+        },
+        {
+            "title": "MARK AS READY TO ACTIVATE",
+            "endpoint": "/inventory/v1/stock/giftcard/mark-as-ready-to-activate",
+            "method": "PUT",
+            "body": {
+                "arr_voucher_ids": [
+                    "UV50K-20210318-000456",
+                    "UV50K-20210318-000457"
+                ],
+                "arr_stockin_no": [
+                    "ROIND50-20210317-000001",
+                    "ROIND50-20210317-000002"
+                ],
+                "id_warehouse": 1,
+                "id_account": 0,
+                "sales_order_no": ""
+            }
+            
+        },
+        {
+            "title": "Get stock count by publishers",
+            "endpoint": "/inventory/v1/stock/count-by-publishers?id_publisher=2&id_publisher=25&status=AVAILABLE",
+            "method": "GET"
+        },
+        {
+            "title": "Get stock count by publishers",
+            "endpoint": "/inventory/v1/stock/count-by-publishers?id_publisher=2&id_publisher=25&status=AVAILABLE",
+            "method": "GET"
+        },
+        {
+            "title": "Download stock count",
+            "endpoint": "/inventory/v1/stock/download?start_date=2021-01-03&end_date=2021-05-06&id_publisher&id_sku_master_voucher",
+            "method": "GET"
+        },
+        {
+            "title": "Stock activation",
+            "endpoint": "/inventory/v1/stock/activation",
+            "method": "PATCH",
+            "body": {
+                "sales_order_no": "SAL-20210331-000001",
+                "id_account": 1,
+                "account_owner": "panjul",
+                "stockin_no": "ROUV00-20210604-000001",
+                "voucher_ids": [
+                    "UV50K-20210604-000008",
+                    "UV50K-20210607-000020"
+                ]
+            }
+        },
+        {
+            "title": "Get stock count activated scanned",
+            "endpoint": "/inventory/v1/stock/count?id_sku_master_voucher=1&start_date=2021-01-03&end_date=2021-05-06&id_sku_master_voucher=2",
+            "method": "GET"
+        },
+        {
+            "title": "MOVE STOCK BETWEEN WAREHOUSES",
+            "endpoint": "/inventory/v1/stock/move-stock",
+            "method": "POST",
+            "body": {
+                "id_sku_master_voucher": 3,
+                "id_origin_warehouse": 3,
+                "destination_warehouses": [
+                    {
+                        "id": 1,
+                        "moved_quantity": 1
+                    },
+                    {
+                        "id": 2,
+                        "moved_quantity": 1
+                    }
+                ]
+            }
+        },
+        {
+            "title": "GET LIST AGING STOCK",
+            "endpoint": "/inventory/v1/stock/list-aging-stocks?id_publisher=2&id_sku_master_voucher=25&voucher_id=UV50K-20210318-000463&stockin_no=ROUV00-20210318-000009&gift_card=NO&page=1&size=20&sortBy=id&descending=true&search&type=datatable",
+            "method": "GET"
+        },
+        {
+            "title": "GET LIST STOCKS",
+            "endpoint": "/inventory/v1/stock?page=1&size=10&sortBy=id&descending=true&search=&id_sku_master_voucher=&id_publisher=&status=ISSUED&gift_card=&voucher_type=PHYSICAL&generated_by=&sales_no=&stockin_no=&journal_no=&id_warehouse=&voucher_id=&start_active_date=&end_active_date=&start_expired_date=&end_expired_date=&start_distributed_time=&end_distributed_time=&type=datatable",
+            "method": "GET"
+        },
+        {
+            "title": "GET STOCK COUNT ACTIVATED",
+            "endpoint": "/inventory/v1/stock/:id/count-activated",
+            "method": "GET"
+        },
+        {
+            "title": "CHECK STOCK",
+            "endpoint": "/inventory/v1/stock/check-summary?id_warehouse=2&id_sku_master_voucher=1&sortBy=id&type=datatable&descending=true&size=20&page=1&search",
+            "method": "GET"
+        },
+        {
+            "title": "Release Stock",
+            "endpoint": "/inventory/v1/cron/set-stock-reservation-to-expired",
+            "method": "PATCH"
+        },
+        {
+            "title": "Check Gift Card",
+            "endpoint": "/inventory/v1/stock/gift-card/check?voucher_id=UV50K-20210604-000008&voucher_pin=687014",
+            "method": "GET"
+        },
+        {
+            "title": "GET REPORT GIFTCARD",
+            "endpoint": "/inventory/v1/stock/gift-card?page=1&size=20&search&descending=true&sortBy&type=datatable&journal_no=PSTVADJ20210625-000002&gift_card=YES&id_publisher=&id_sku_master_voucher=69&id_channel&account_owner&sales_no=SO-001&stockin_no=ROUV00-20210624-000001&status=AVAILABLE&status=SOLD&voucher_id=UV50K-20210625-000030&activation_no=SO-001&id_warehouse=2&start_active_date=2021-06-01&end_active_date=2022-06-30&start_expired_date=2021-06-01&end_expired_date=2022-06-30",
+            "method": "GET"
+        },
+        {
+            "title": "Get Stock Summary Report",
+            "endpoint": "/inventory/v1/channel/stock/summary?page=1&size=10&sortBy=stock&descending=false&search=&type=datatable",
+            "method": "GET"
+        },
+        {
+            "title": "Get Detail Voucher",
+            "endpoint": "/inventory/v1/stock/67/detail",
+            "method": "GET"
+        },
+        {
+            "title": "Stock Adjustment [Operational Only]",
+            "endpoint": "/inventory/v1/stock/stock-adjustment",
+            "method": "POST",
+            "body": {
+                "id_sku_master_voucher": 826,
+                "id_warehouse": 1,
+                "description": "adjustment in reserved GRT00020-PR di warehouse 1"
+            }
+        },
+        {
+            "title": "Get list ledger entry",
+            "endpoint": "/inventory/v1/ledger-entry?page=1&size=20&sortBy=&descending=true&search=&type=datatable&id_sku_master_voucher=64&order_type=DIGITAL&id_publisher=&start_date=2021-03-03&end_date=2021-09-25&created_by=65&order_no=ROAW01-20210420-000001",
+            "method": "GET"
+        },
+        {
+            "title": "Get detail ledger entry",
+            "endpoint": "/inventory/v1/ledger-entry/1",
+            "method": "GET"
+        },
+        {
+            "title": "Create Positive Adjustment",
+            "endpoint": "/inventory/v1/positive-adjustment",
+            "method": "POST",
+            "body": {
+    
+                "data": [
+                    {
+                        "active_date": "2021-01-01",
+                        "expired_date": "2022-01-01",
+                        "nominal": 50000,
+                        "sku_master_voucher_code": "IDMR50",
+                        "voucher_code": "U2FsdGVkX19sBB6jNec+6VPmCmYEcnvuFan6mdHFZzQJzljW0OJcTyPHglfJAvK8",
+                        "voucher_id": "IDMR50-20211102-000001"
+                    }
+                ],
+                "description": "",
+                "id_publisher": "1",
+                "id_sku_master_voucher": "1",
+                "id_warehouse": "1",
+                "purchase_price": 48000,
+                "quantity": null,
+                "type": "DIGITAL"
+            }
+        },
+        {
+            "title": "Create Negative Adjustment",
+            "endpoint": "/inventory/v1/negative-adjustment",
+            "method": "POST",
+            "body": {
+                "order_type": "DIGITAL",
+                "id_warehouse": "1",
+                "id_publisher": "1",
+                "id_sku_master_voucher": "1",
+                "quantity": 1,
+                "description": "",
+                "data": []
+            }
+        },
+        {
+            "title": "Download list adjustment",
+            "endpoint": "/inventory/v1/adjustments/download?search=&start_date=&end_date=&entry_type=",
+            "method": "GET"
+        },
+        {
+            "title": "export negative adjustment",
+            "endpoint": "/inventory/v1/negative-adjustment/438/export",
+            "method": "GET"
+        },
+        {
+            "title": "List Adjustment",
+            "endpoint": "/inventory/v1/adjustments?page=1&size=1&search=&sortBy=id&descending=true&type=datatable&entry_type=",
+            "method": "GET"
+        },
+        {
+            "title": "Get Adjustment Data By Id",
+            "endpoint": "/inventory/v1/adjustments/79",
+            "method": "GET"
+        },
+        {
+            "title": "Adjust Inventory Movement",
+            "endpoint": "/inventory/v1/inventory-movement-adjustment?limit=1",
+            "method": "PATCH"
+        },
+        {
+            "title": "Sales physical upload",
+            "endpoint": "/inventory/v1/sales/physical",
+            "method": "POST",
+            "body": {
+                "type": "B2B",
+                "id_marketplace": 9,
+                "id_warehouse": 2,
+                "data": [
+                    {
+                        "marketplace": "Tokopedia",
+                        "payment_date": "2022-03-22",
+                        "quantity": "2",
+                        "selling_price": "22000",
+                        "shipped_by": "JNE",
+                        "shipping_date": "2022-03-23",
+                        "sku_master_voucher_code": "QAUVCR2",
+                        "type": "B2B"
+                    }
+                ]
+            }
+        },
+        {
+            "title": "Sales physical upload detail",
+            "endpoint": "/inventory/v1/sales/physical/197",
+            "method": "POST",
+            "body": {
+                "vouchers": [
+                    {
+                        "voucher_id": "KFCP50-000027"
+                    },
+                    {
+                        "voucher_id": "KFCP50-000026"
+                    },
+                    {
+                        "voucher_id": "KFCP50-000025"
+                    }
+                ]
+            }
+        },
+        {
+            "title": "Get sales physical details",
+            "endpoint": "/inventory/v1/sales/physical/3",
+            "method": "GET"
+        },
+        {
+            "title": "Get sales physical list",
+            "endpoint": "/inventory/v1/sales/physical?page=1&size=20&sortBy=&descending=false&search=&type=datatable&id_marketplace&id_publisher&id_sku_master_voucher&shipped_by&start_shipping_date&end_shipping_date&start_payment_date&end_payment_date&sales_type",
+            "method": "GET"
+        },
+        {
+            "title": "GET LIST REDEEMABLE VOUCHERS",
+            "endpoint": "/inventory/v1/voucher/list-redeemables?id_publisher=2&id_sku_master_voucher=1&voucher_id=V-REDEEM-01&voucher_code=SIJI-SPECIMEN-REDEEM-01&sales_no=SPECIMEN-SALES-SIJI-20210518-000001&stockin_no=SPECIMEN-SALE-STOCKIN-SIJI-20210518-000001&gift_card=NO&activation_no=SPECIMEN-ACTIVATION-SIJI-20210518-000001&status=SOLD&is_redeemed=NO",
+            "method": "GET"
+        },
+        {
+            "title": "GENERATE GIFT CARD CLAIM TICKET",
+            "endpoint": "/inventory/v1/claims-giftcard-issue",
+            "method": "POST",
+            "body": {
+                "voucher_id": "UV50K-20210624-000009",
+                "customer_email": "customer@mail.com",
+                "customer_nik": "3161071801880003",
+                "reference_id": "CLAIM-GC-20210628-17"
+            }
+        },
+        {
+            "title": "SEND EMAIL GIFTCARD CLAIM GIFTCARD ISSUE",
+            "endpoint": "/inventory/v1/claims-giftcard-issue/17/send-giftcard",
+            "method": "GET"
+        },
+        {
+            "title": "GET ONE GIFT CARD CLAIM TICKET",
+            "endpoint": "/inventory/v1/claims-giftcard-issue/26",
+            "method": "GET"
+        }
+    ]
+}
+  

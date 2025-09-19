@@ -22,25 +22,26 @@ import kotlin.system.measureTimeMillis
 import java.io.File
 
 interface EndpointRepository {
-    suspend fun execute(item: EndpointCallItem, headers: Headers?): EndpointCallResult
+    suspend fun execute(item: EndpointCallItem, headers: Headers): EndpointCallResult
 }
 
 class EndpointRepositoryImpl (
     private val httpClient: HttpClient
 ) : EndpointRepository {
 
-    override suspend fun execute(item: EndpointCallItem, headers: Headers?): EndpointCallResult {
+    override suspend fun execute(item: EndpointCallItem, headers: Headers): EndpointCallResult {
         var status: Int = -1
         var responseBody: String? = null
         var responseHeaders: Map<String, String> = emptyMap()
 
         val duration = measureTimeMillis {
             try {
-                val response = httpClient.request(item.endpointUrl) {
+                val endpoint = "${headers.BaseUrl.trimEnd('/')}/${item.endpointUrl.trimStart('/')}"
+                val response = httpClient.request(endpoint) {
                     method = HttpMethod.parse(item.httpMethod)
                     
                     // Apply headers if provided
-                    headers?.let { headerObj ->
+                    headers.let { headerObj ->
                         headerObj.Authorization?.let { 
                             this@request.headers.append(HttpHeaders.Authorization, it) 
                         }
@@ -68,6 +69,9 @@ class EndpointRepositoryImpl (
                     when {
                         !item.requestBody.isNullOrBlank() -> {
                             setBody(item.requestBody)
+                        }
+                        item.requestBodyJson != null -> {
+                            setBody(item.requestBodyJson.toString())
                         }
                         !item.formData.isNullOrEmpty() || !item.fileData.isNullOrEmpty() -> {
                             // Create multipart form data
@@ -103,6 +107,7 @@ class EndpointRepositoryImpl (
         }
 
         return EndpointCallResult(
+            title = item.title,
             endpoint = item.endpointUrl,
             method = item.httpMethod,
             statusCode = status,
