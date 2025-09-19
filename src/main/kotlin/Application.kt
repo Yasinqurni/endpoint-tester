@@ -44,7 +44,7 @@ fun Application.module() {
 
 fun Application.configureRouting() {
     routing {
-        get("/") {
+        get("/health") {
             call.respondText("Hello World!")
         }
     }

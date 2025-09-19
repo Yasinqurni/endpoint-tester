@@ -19,7 +19,6 @@ class StressTestUseCaseImpl(
         runCatching {
             val config = request.config
             val headers = request.headers
-            
             // Create endpoint call item from config
             val endpointItem = EndpointCallItem(
                 endpointUrl = config.endpointUrl,

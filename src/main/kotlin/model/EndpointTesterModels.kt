@@ -5,13 +5,13 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class Headers(
-    @SerialName("Authorization") val Authorization: String? = null,
+    val Authorization: String? = null,
     @SerialName("Content-Type") val ContentType: String? = null,
-    @SerialName("Accept") val Accept: String? = null,
+    val Accept: String? = null,
     @SerialName("User-Agent") val UserAgent: String? = null,
     @SerialName("Accept-Language") val AcceptLanguage: String? = null,
     @SerialName("Accept-Encoding") val AcceptEncoding: String? = null,
-    @SerialName("Accept-Charset") val AcceptCharset: String? = null,
+    @SerialName("Accept-Charset") val AcceptCharset: String? = null
 )
 
 

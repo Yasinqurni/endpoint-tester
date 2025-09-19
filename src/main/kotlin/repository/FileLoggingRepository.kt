@@ -4,6 +4,7 @@ import model.EndpointCallItem
 import model.EndpointCallResult
 import model.StressTestConfig
 import model.StressTestMetrics
+import model.StressTestLogData
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import java.nio.file.Files
@@ -49,14 +50,14 @@ class LoggingRepositoryImpl(
     }
 
     override suspend fun writeStressTestResult(config: StressTestConfig, metrics: StressTestMetrics, results: List<EndpointCallResult>) {
-        val stressTestData = mapOf(
-            "timestamp" to OffsetDateTime.now().toString(),
-            "config" to config,
-            "metrics" to metrics,
-            "totalResults" to results.size,
-            "successRate" to "${metrics.successfulRequests}/${metrics.totalRequests}",
-            "avgResponseTime" to "${metrics.averageResponseTime}ms",
-            "requestsPerSecond" to metrics.requestsPerSecond
+        val stressTestData = StressTestLogData(
+            timestamp = OffsetDateTime.now().toString(),
+            config = config,
+            metrics = metrics,
+            totalResults = results.size,
+            successRate = "${metrics.successfulRequests}/${metrics.totalRequests}",
+            avgResponseTime = "${metrics.averageResponseTime}ms",
+            requestsPerSecond = metrics.requestsPerSecond
         )
         
         val line = buildString {
@@ -65,6 +66,7 @@ class LoggingRepositoryImpl(
             append(json.encodeToString(stressTestData))
             append('\n')
         }
+        
         Files.write(stressTestLogFilePath(), line.toByteArray(), StandardOpenOption.CREATE, StandardOpenOption.APPEND)
     }
 
